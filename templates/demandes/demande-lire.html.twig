@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p></p>
+{% for message in app.flashes('notification') %}
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <span class="alert-icon"><span class="visually-hidden">Success</span></span>
+          <p> {{message}} </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
+   </div>
+{% endfor %}
+
+<p><h1> Mes Demandes</h1></p>
+
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th> Numero de demande
+        </th>
+        <th> Statut de la demande
+        </th>
+        <th> Descriptif
+        </th>
+    </tr>
+</thead>
+<tbody>
+{% for uneDemande in articles %}
+
+    <tr>
+        <td>
+            {{uneDemande.numDemande}}
+        </td>
+        <td>
+            {{uneDemande.typeEtat}}
+        </td>
+        <td>
+            {{uneDemande.descriptif > 20 ? uneDemande.descriptif|slice(0, 21)|split(' ')|join(' ') ~ '…' : uneDemande.descriptif }}	
+        </td> 
+        <td>
+        <a href="{{ path('app_demandes_modifier',{'id': uneDemande.id }) }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAnElEQVQ4jdXSPQ5BYRCF4afQihVYhsIl/lVsQWOFxFJUKkqiIbegozCSGwk+kUicZDIzxXvmFMM/qYYlVsg+hTMccYlafwI3sENeMNikws2AhzHnOKGfenmLQewZ9hh/A49SY28LMe9mw1R4h96TJC+VBdyJvfVg9lZzTGNuB9xNhSs4oBomxSRJmuAcJjPUU8FS9HJcXrg9y+90BVINJ24cGqUfAAAAAElFTkSuQmCC"/></a>
+         &nbsp;&nbsp;
+         {% if (uneDemande.isPointeurInfo == false and uneDemande.isPointeurInfoLu == false) %}{# White #}
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAyUlEQVQ4je2PvwqCYBRHT1EEgjWU+Aa9QEODm6/RHOSTiHuQk3y7UC/hI7i6tSi6NPTvi2yoQMTqi9YOXLjDvef+LvxIq9IPgOGj3wJnZYFlWUvHceaGYQAQx/HV87xZlmVrFUnX9/1TWcN13T0wBSYNNa4K+mEYHusCKWWZJMmlqaIoOtu2vXkr+EQQBCeg11b5sQld18ufBE/+grvgUBRF6+NkjTzPAQ4dQAohfE3TFqZpKi2naYoQYgXI6uU+MFINAOy+CPyaG3f/oIqp2UM6AAAAAElFTkSuQmCC">
+        {% elseif (uneDemande.isPointeurInfo == true and uneDemande.isPointeurInfoLu == false) %}{# Red #}
+           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAgElEQVQ4jWNgGGjAyMDAwPDMx7aNkeF/MQMDAxsDA8N/BgaGQyxM/31FNx39TMgAJogpcM0wQ+1//2OqJNoFz31s/pPo8l//Gf/3SG0+Ws1EokYYYGP8z1jMwAD1ApmAnVIDGEYNQDXgFxl6f8IN+M/4v4dEQ34x/mfoIcNSGgAAejEew4h+xwEAAAAASUVORK5CYII=">
+        {% elseif (uneDemande.isPointeurInfo == true and uneDemande.isPointeurInfoLu == true) %}{# Green #}
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAfklEQVQ4jWNgGGjAyMDAwKB3pqCNgYGxmIGBgY2BgeE/AyPDoZ/fWX1v2nR9JmQAE9QcmGaIof8Z7Nk5flWS4ILC/yS6/BfDf4aeS6b91UwkaoQBNgZGhmIGBrgXyALslBrAMGoAqgG/yND7E2HAf4YeEg35xcD4v4cMS2kAADMZGtFLxgy6AAAAAElFTkSuQmCC">
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{ path('app_demandes_valider_supprimer',{'id': uneDemande.id }) }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAXElEQVQ4je2TQQqAMAwER5/QL1t8sznVS8W6UttKvDkQspBlySGBj1gBA1LucTTAgJB1ALaacSp0ejm7oMbmfG4Ytd+oBXTzBzgEKOUFKo8XeRA5f0DLgMVlTVd2EJYXJMQamRYAAAAASUVORK5CYII="/></a>
+        </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<div>
+
+{{ knp_pagination_render (articles, 'demandes/pagination.html.twig') }}
+</div>
+<a class="btn btn-primary" href="{{ path('app_demandes_ajouter') }}">Nouvelle demande</a>
+{% endblock %}

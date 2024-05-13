@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="Demandes">
+<h1> {{form_title}} </h1>
+
+
+{{ form_start(form_demandes , {'attr':{'class':'col-lg-15'}} ) }}
+    {{ form_row(form_demandes.cuid) }}
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.numDemande) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_demandes.cuidTec) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.pointeurFichier) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_demandes.pointeurInfo) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.statutAvancement) }}
+        </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.deadLine) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.dateSaisie) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.dernierNiveau) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.descriptif) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.contrainte) }}
+        </div>
+    </div>
+        <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.pointeurInfoLu) }}
+        </div>
+    </div>
+       <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.typeEtat) }}
+        </div>
+    </div>
+        <div class="row">
+        <div class="col">
+             {{ form_row(form_demandes.typeDemande) }}
+        </div>
+    </div>
+{{ form_end(form_demandes) }}
+
+
+</div>
+{% endblock %}

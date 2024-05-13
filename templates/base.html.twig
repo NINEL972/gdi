@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('/build/css/boosted.css') }}">
+
+       
+        <script type="text/javascript" src="{{ asset('/build/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/build/js/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/build/js/boosted.bundle.min.js') }}"></script>
+     
+
+
+    </head>
+    <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       
+       <a class="navbar-brand" href="https://welcome.com.intraorange/">
+         <img src="{{ asset('/img/orange-logo.svg') }}" alt="logo_orange">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/demandes/lire">Mes Demandes <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Technicien <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Demandeur <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/demandes">Admin Utilisateurs <span class="sr-only"></span></a>
+                </li>
+
+            </ul>
+       </div>
+    </nav>
+        {% block body %}{% endblock %}
+                <footer class="footer  has-background-dark">
+  <div class="content has-text-centered has-text-white">
+    <p>
+      <strong class="has-text-white">Copyright © DTAG DataFact 2022</strong> 
+    </p>
+  </div>
+</footer>
+ 
+
+      
+        <script src="{{ asset('build/js/jquery.min.js') }}"></script>
+       
+               
+               <script src="{{ asset('build/js/bootstrap.bundle.js') }}"></script>
+ 
+          <script src="{{ asset('build/js/boosted.bundle.js') }}"></script>
+            <script src="{{ asset('build/js/moment.js') }}"></script>
+              <script src="{{ asset('build/js/bootstrap-datetimepicker.min.js') }}"></script>
+               <script src="{{ asset('build/js/popper.min.js') }}"></script>
+ 
+ <script type="text/javascript">
+              const alerts = document.querySelectorAll('[class*="alert-"]')
+for (const alert of alerts) {
+    setTimeout( function() {
+        const bootstrapAlert = bootstrap.Alert.getOrCreateInstance(alert);
+        bootstrapAlert.close();
+    }, 2000);
+}
+ </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<h1> {{form_title}} </h1>
+
+
+{{ form_start(form_users , {'attr':{'class':'col-lg-15'}} ) }}
+    {{ form_row(form_users.cuid) }}
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_users.prenom) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_users.nom) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_users.mail) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_users.mailteams) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+             {{ form_row(form_users.service) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_users.niveau) }}
+        </div>
+    </div>
+   
+
+{{ form_end(form_users) }}
+
+
+</div>
+{% endblock %}

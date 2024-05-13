@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<p></p>
+<p></p>
+<div class="card">
+  <h5 class="card-header">Confirmation de suppression</h5>
+  <div class="card-body">
+    <p class="card-text">Êtes-vous sûre de vouloir de supprimer cette demande ?</p>
+    <a href="{{ path('app_demandes_supprimer',{'id': id }) }}" class="btn btn-primary">Valider</a>
+    <a href="{{ path('app_demandes_lire')}}" class="btn btn-secondary">Annuler</a>
+  </div>
+</div>
+
+{% endblock %}

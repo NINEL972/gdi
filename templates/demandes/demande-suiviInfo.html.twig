@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<head>
+</head>
+<body>
+{{ form_start(form_demandes , {'attr':{'class':'col-lg-15'}} ) }}
+             {{ form_row(form_demandes.commentaires) }}
+        </div>
+        <div class="col">
+             {{ form_row(form_demandes.cuidEcrivain) }}
+        </div>
+    </div>
+</body>
+{{ form_end(form_demandes) }}
+{% endblock %}
